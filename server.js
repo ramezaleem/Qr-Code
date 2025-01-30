@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 const QRCode = require( 'qrcode' );
 const bodyParser = require( 'body-parser' );
+const redirect = require( "./api/redirect" );
+
 
 // Middleware to parse form data
 app.use( bodyParser.urlencoded( { extended: true } ) );
@@ -100,9 +102,9 @@ app.post( '/generate-qr', ( req, res ) => {
     }
 
     // تخزين الروابط المدخلة في الذاكرة
-    linkMap[ fakeLink ] = originalLink;
+    redirect.addLink( fakeLink, originalLink );
 
-    const baseUrl = 'https://qr-code-1dcr.vercel.app'; // استبدل هذا برابط Vercel بعد النشر
+    const baseUrl = req.protocol + '://' + req.get( 'host' ); // استبدل هذا برابط Vercel بعد النشر
     const fullLink = `${ baseUrl }/${ fakeLink }`;
 
     // توليد QR Code للرابط المزيف مباشرة
