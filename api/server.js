@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 const QRCode = require( 'qrcode' );
 const bodyParser = require( 'body-parser' );
-const redirect = require( "./api/redirect" );
+const redirect = require( "./redirect" );
 
 
 // Middleware to parse form data
@@ -178,6 +178,9 @@ app.get( '/:fakeLink', ( req, res ) => {
 } );
 
 // تشغيل السيرفر
-app.listen( port, () => {
-    console.log( `Server running at http://localhost:${ port }` );
-} );
+// app.listen( port, () => {
+//     console.log( `Server running at http://localhost:${ port }` );
+// } );
+
+module.exports = app;
+
