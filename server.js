@@ -102,7 +102,7 @@ app.post( '/generate-qr', ( req, res ) => {
     // تخزين الروابط المدخلة في الذاكرة
     linkMap[ fakeLink ] = originalLink;
 
-    const baseUrl = 'https://your-app.vercel.app'; // استبدل هذا برابط Vercel بعد النشر
+    const baseUrl = 'https://qr-code-1dcr.vercel.app'; // استبدل هذا برابط Vercel بعد النشر
     const fullLink = `${ baseUrl }/${ fakeLink }`;
 
     // توليد QR Code للرابط المزيف مباشرة
