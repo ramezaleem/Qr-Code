@@ -104,7 +104,7 @@ app.post( '/generate-qr', ( req, res ) => {
 
 
     // استخدم المتغير البيئي
-    const baseUrl = process.env.BASE_URL;
+    const baseUrl = 'https://qr-code-app.vercel.app';
 
     // استخدم المتغير ده بدل من الرابط الثابت
     const fullLink = `${ baseUrl }/${ fakeLink }`;
