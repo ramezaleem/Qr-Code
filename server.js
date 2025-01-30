@@ -104,11 +104,11 @@ app.post( '/generate-qr', ( req, res ) => {
 
 
     // استخدم المتغير البيئي
-    const baseUrl = process.env.BASE_URL || 'https://qr-code-app-111.vercel.app'; // استخدم الرابط الثابت من البيئة
+    const baseUrl = process.env.BASE_URL || 'https://qr-code-app-222.vercel.app'; // استخدم الرابط الثابت من البيئة
     const fullLink = `${ baseUrl }/${ fakeLink }`;  // استخدم الرابط بشكل ثابت
 
 
-
+    console.log( 'Base URL:', process.env.BASE_URL );
 
     // توليد QR Code للرابط المزيف مباشرة
     QRCode.toDataURL( fullLink, ( err, url ) => {
