@@ -102,7 +102,11 @@ app.post( '/generate-qr', ( req, res ) => {
     // تخزين الروابط المدخلة في الذاكرة
     linkMap[ fakeLink ] = originalLink;
 
-    const baseUrl = 'https://your-app-name.vercel.app'; // استبدل هذا برابط Vercel بعد النشر
+
+    // استخدم المتغير البيئي
+    const baseUrl = process.env.BASE_URL;
+
+    // استخدم المتغير ده بدل من الرابط الثابت
     const fullLink = `${ baseUrl }/${ fakeLink }`;
 
 
