@@ -1,8 +1,9 @@
 const express = require( 'express' );
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const QRCode = require( 'qrcode' );
 const bodyParser = require( 'body-parser' );
+require( 'dotenv' ).config();
 
 // Middleware to parse form data
 app.use( bodyParser.urlencoded( { extended: true } ) );
@@ -104,13 +105,11 @@ app.post( '/generate-qr', ( req, res ) => {
 
 
     // استخدم المتغير البيئي
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000'; // استخدم localhost في التطوير المحلي
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
     const fullLink = `${ baseUrl }/${ fakeLink }`;
 
-    console.log( 'Full Link:', fullLink );
-
-
-    console.log( 'Base URL:', process.env.BASE_URL );
+    console.log( 'BASE_URL:', process.env.BASE_URL );
+    console.log( 'PORT:', process.env.PORT );
 
     // توليد QR Code للرابط المزيف مباشرة
     QRCode.toDataURL( fullLink, ( err, url ) => {
@@ -186,3 +185,4 @@ app.get( '/:fakeLink', ( req, res ) => {
 app.listen( port, () => {
     console.log( `Server running at http://localhost:${ port }` );
 } );
+module.exports = app;
